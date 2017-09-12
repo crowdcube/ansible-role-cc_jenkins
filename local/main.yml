@@ -1,0 +1,4 @@
+---
+
+cc_jenkins_aws_config:
+    region: eu-west-2

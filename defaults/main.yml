@@ -1,0 +1,29 @@
+---
+
+cc_jenkins_github_oauth_script_filename: github_oauth.groovy
+cc_jenkins_github_client_id: yourGHClientIDHere
+cc_jenkins_github_client_secret: yourGHClientSecretHere
+cc_jenkins_github_organization: yourGHOrganizationNameHere
+cc_jenkins_github_administrators: []
+
+cc_jenkins_kubectl_version: 1.7.5
+
+cc_jenkins_kops_version: 1.7.0
+
+cc_jenkins_helm_version: 2.6.1
+cc_jenkins_helm_uncompressed_dir: linux-amd64
+
+cc_jenkins_aws_config: {}
+cc_jenkins_aws_credentials:
+    id: yourAccessKeyIdHere
+    secret: yourSecretKeyHere
+
+cc_jenkins_k8s_clusters: {}
+
+#GeerlingGuy roles' variables
+java_packages: java-1.8.0-openjdk
+
+jenkins_plugins:
+  - git
+  - scm-sync-configuration
+  - blueocean

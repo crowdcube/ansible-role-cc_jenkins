@@ -1,0 +1,42 @@
+---
+
+- name: Ensure the helm directory exists
+  file:
+    path: /var/lib/helm
+    state: directory
+
+- name: Get helm compressed package
+  get_url:
+    url: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ cc_jenkins_helm_version}}-linux-amd64.tar.gz"
+    dest: /tmp/helm.tar.gz
+    force: True
+
+- name: Unarchive helm package
+  unarchive:
+    src: /tmp/helm.tar.gz
+    dest: /tmp
+    remote_src: False
+
+- name: Copy the helm binary to /var/lib
+  copy:
+    src: "/tmp/{{ cc_jenkins_helm_uncompressed_dir }}/helm"
+    dest: /var/lib/helm/helm
+    remote_src: False
+    mode: 0775
+
+- name: Create link to helm binary
+  file:
+    src: /var/lib/helm/helm
+    dest: /usr/local/bin/helm
+    state: link
+    force: True
+
+- name: Remove helm temp dir
+  file:
+    path: "/tmp/{{ cc_jenkins_helm_uncompressed_dir }}"
+    state: absent
+
+- name: Remove helm archive file
+  file:
+    path: /tmp/helm.tar.gz
+    state: absent

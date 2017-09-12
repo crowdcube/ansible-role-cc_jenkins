@@ -1,0 +1,3 @@
+[default]
+region = {{ cc_jenkins_aws_config.region | default('eu-west-1') }}
+output = {{ cc_jenkins_aws_config.output | default('json') }}

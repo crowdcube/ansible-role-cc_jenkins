@@ -1,0 +1,22 @@
+---
+
+- name: Ensure the AWS directory exists
+  file:
+    path: "{{ jenkins_home }}/.aws"
+    state: directory
+    owner: jenkins
+    group: jenkins
+
+- name: Create the AWS config file
+  template:
+    src: aws_config.j2
+    dest: "{{ jenkins_home }}/.aws/config"
+    owner: jenkins
+    group: jenkins
+
+- name: Create the AWS credentials file
+  template:
+    src: aws_credentials.j2
+    dest: "{{ jenkins_home }}/.aws/credentials"
+    owner: jenkins
+    group: jenkins

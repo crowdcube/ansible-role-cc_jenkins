@@ -1,0 +1,7 @@
+---
+
+dependencies:
+  - geerlingguy.java
+  - geerlingguy.jenkins
+  - darkraiden.ansible-pip
+  - darkraiden.ansible-docker

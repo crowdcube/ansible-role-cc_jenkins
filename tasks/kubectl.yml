@@ -1,0 +1,20 @@
+---
+
+- name: Ensure kubectl dir exists
+  file:
+    path: /var/lib/kubectl
+    state: directory
+
+- name: Get kubectl
+  get_url:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ cc_jenkins_kubectl_version }}/bin/linux/amd64/kubectl"
+    dest: /var/lib/kubectl/kubectl
+    force: True
+    mode: 0775
+
+- name: Create link to kubectl binary
+  file:
+    src: /var/lib/kubectl/kubectl
+    dest: /usr/local/bin/kubectl
+    state: link
+    force: True

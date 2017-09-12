@@ -1,0 +1,31 @@
+---
+
+- name: Ensure kops dir exists
+  file:
+    path: /var/lib/kops
+    state: directory
+
+- name: Get Kops
+  get_url:
+    url: "https://github.com/kubernetes/kops/releases/download/{{ cc_jenkins_kops_version }}/kops-linux-amd64"
+    dest: /var/lib/kops/kops
+    force: True
+    mode: 0775
+
+- name: Create link to kops binary
+  file:
+    src: /var/lib/kops/kops
+    dest: /usr/local/bin/kops
+    state: link
+    force: True
+
+- name: Ensure kube config directory doesn't exist
+  file:
+    path: "{{ jenkins_home }}/.kube"
+    state: absent
+  when: cc_jenkins_k8s_clusters is defined
+
+- name: Initialise kube config file
+  command: "kops export kubecfg {{ item.value.name }} --state=s3://{{ item.value.s3 }}"
+  with_dict: "{{ cc_jenkins_k8s_clusters }}"
+  when: cc_jenkins_k8s_clusters is defined

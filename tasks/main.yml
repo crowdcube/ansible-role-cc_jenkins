@@ -1,0 +1,11 @@
+---
+
+- include: github_oauth.yml
+
+- include: aws_config.yml
+
+- include: kubectl.yml
+
+- include: kops.yml
+
+- include: helm.yml

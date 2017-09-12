@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  become: True
+  roles:
+    - role: ansible-role-cc_jenkins
+  vars_files:
+    - local/main.yml
