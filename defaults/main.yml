@@ -6,6 +6,8 @@ cc_jenkins_github_client_secret: yourGHClientSecretHere
 cc_jenkins_github_organization: yourGHOrganizationNameHere
 cc_jenkins_github_administrators: []
 
+cc_jenkins_credentials: {}
+
 cc_jenkins_kubectl_version: 1.7.5
 
 cc_jenkins_kops_version: 1.7.0

@@ -4,6 +4,8 @@
 
 - include: github_oauth.yml
 
+- include: credentials.yml
+
 - include: aws_config.yml
 
 - include: kubectl.yml

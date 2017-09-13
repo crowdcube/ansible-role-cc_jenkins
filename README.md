@@ -27,6 +27,20 @@ cc_jenkins_github_administrators: [] #list of Github Administrator IDs
 
 Jenkins Github OAuth informations, they are used by the groovy script living in `/var/lib/jenkins/init.groovy.d/github_oauth.groovy`. **NB** in order to work, the script requires the `github-oauth` plugin in order to work.
 
+
+```yaml
+cc_jenkins_credentials:
+    git:
+        name: myuser
+        secret: xyz1235
+    aws:
+        name: aws_access_key_id
+        secret: aws_secret_key_id
+```
+
+Credentials must be defined in the format above (you must have `cloudbees-credentials` plugin installed).
+
+
 ```yaml
 cc_jenkins_kubectl_version: 1.7.5
 ```
