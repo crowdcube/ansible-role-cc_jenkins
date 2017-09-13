@@ -1,9 +1,0 @@
----
-
-- name: Generate groovy template
-  template:
-    src: github_oauth.groovy.j2
-    dest: "{{ jenkins_home }}/init.groovy.d/{{ cc_jenkins_github_oauth_script_filename }}"
-    owner: jenkins
-    group: jenkins
-  notify: restart jenkins

@@ -1,10 +1,11 @@
 ---
 
-cc_jenkins_github_oauth_script_filename: github_oauth.groovy
 cc_jenkins_github_client_id: yourGHClientIDHere
 cc_jenkins_github_client_secret: yourGHClientSecretHere
 cc_jenkins_github_organization: yourGHOrganizationNameHere
 cc_jenkins_github_administrators: []
+
+cc_jenkins_credentials: {}
 
 cc_jenkins_kubectl_version: 1.7.5
 
