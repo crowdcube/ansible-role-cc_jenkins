@@ -26,6 +26,7 @@
   when: cc_jenkins_k8s_clusters is defined
 
 - name: Initialise kube config file
+  become: jenkins
   command: "kops export kubecfg {{ item.value.name }} --state=s3://{{ item.value.s3 }}"
   with_dict: "{{ cc_jenkins_k8s_clusters }}"
   when: cc_jenkins_k8s_clusters is defined
