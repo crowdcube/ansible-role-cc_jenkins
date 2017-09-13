@@ -77,6 +77,28 @@ cc_jenkins_k8s_clusters:
         s3: nameOfTheStateBucket
 ```
 
+Kubernetes clusters information.
+
+```yaml
+cc_jenkins_host: http://localhost:8080
+```
+
+The Jenkins server host used by its own cli.
+
+```yaml
+cc_jenkins_admin:
+    user: admin
+    token: admin
+```
+
+Admin username and token used by the cli.
+
+```yaml
+cc_jenkins_plugins: []
+```
+
+List of Jenkins plugins to be installed using the cli.
+
 ## Test Kitchen
 
 ### Install Deps

@@ -2,3 +2,10 @@
 
 cc_jenkins_aws_config:
     region: eu-west-2
+
+cc_jenkins_admin:
+    user: admin
+    token: admin
+
+cc_jenkins_plugins:
+  - git

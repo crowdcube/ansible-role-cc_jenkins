@@ -4,3 +4,16 @@
   user:
     name: jenkins
     shell: /bin/bash
+
+- name: Get the Jenkins cli
+  get_url:
+    url: "{{ cc_jenkins_host }}/jnlpJars/jenkins-cli.jar"
+    dest: "{{ jenkins_home }}/jenkins-cli.jar"
+    force: True
+
+- name: Install Jenkins plugins using the cli
+  command: "java -jar jenkins-cli.jar -auth {{ cc_jenkins_admin.user }}:{{ cc_jenkins_admin.token }} -s {{ cc_jenkins_host }} install-plugin {{ item }}"
+  args:
+    chdir: "{{ jenkins_home }}"
+  with_items: "{{ cc_jenkins_plugins }}"
+  when: cc_jenkins_admin is defined
