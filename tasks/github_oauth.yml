@@ -6,3 +6,4 @@
     dest: "{{ jenkins_home }}/init.groovy.d/{{ cc_jenkins_github_oauth_script_filename }}"
     owner: jenkins
     group: jenkins
+  notify: restart jenkins

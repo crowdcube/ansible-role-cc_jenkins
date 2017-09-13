@@ -20,5 +20,11 @@ cc_jenkins_aws_credentials:
 
 cc_jenkins_k8s_clusters: {}
 
+cc_jenkins_host: http://localhost:8080
+
+cc_jenkins_admin: {}
+
+cc_jenkins_plugins: []
+
 #GeerlingGuy roles' variables
 java_packages: java-1.8.0-openjdk

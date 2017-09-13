@@ -34,3 +34,8 @@ describe user('jenkins') do
     it { should have_home_directory '/var/lib/jenkins' }
     it { should have_login_shell '/bin/bash' }
 end
+
+#Check the Jenkins cli
+describe file('/var/lib/jenkins/jenkins-cli.jar') do
+    it { should exist }
+end
