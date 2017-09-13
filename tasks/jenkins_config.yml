@@ -11,9 +11,37 @@
     dest: "{{ jenkins_home }}/jenkins-cli.jar"
     force: True
 
+- name: Check if GitHub OAuth plugin folder exists
+  stat:
+    path: "{{ jenkins_home }}/plugins/github-oauth"
+  register: github_oauth_exists
+
+- name: Install GitHub OAuth plugin using default configuration
+  command: "java -jar jenkins-cli.jar -auth admin:admin -s {{ cc_jenkins_host }} install-plugin github-oauth"
+  args:
+    chdir: "{{ jenkins_home }}"
+  when: github_oauth_exists.stat.islnk is not defined
+
+- name: Restart Jenkins
+  service:
+    name: jenkins
+    state: restarted
+  when: github_oauth_exists.stat.islnk is not defined
+
+- name: Wait for Jenkins to be restarted
+  wait_for:
+    timeout: 20
+  when: github_oauth_exists.stat.islnk is not defined
+
 - name: Install Jenkins plugins using the cli
   command: "java -jar jenkins-cli.jar -auth {{ cc_jenkins_admin.user }}:{{ cc_jenkins_admin.token }} -s {{ cc_jenkins_host }} install-plugin {{ item }}"
   args:
     chdir: "{{ jenkins_home }}"
   with_items: "{{ cc_jenkins_plugins }}"
   when: cc_jenkins_admin is defined
+  ignore_errors: yes
+
+- name: Restart Jenkins
+  service:
+    name: jenkins
+    state: restarted
