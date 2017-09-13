@@ -18,7 +18,6 @@ Requires `curl` to be installed on the server.
 Available variables are listed below, along with default values (see `default/main.yml`):
 
 ```yaml
-cc_jenkins_github_oauth_script_filename: github_oauth.groovy
 cc_jenkins_github_client_id: yourGHClientIDHere
 cc_jenkins_github_client_secret: yourGHClientSecretHere
 cc_jenkins_github_organization: yourGHOrganizationNameHere

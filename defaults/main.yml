@@ -1,6 +1,5 @@
 ---
 
-cc_jenkins_github_oauth_script_filename: github_oauth.groovy
 cc_jenkins_github_client_id: yourGHClientIDHere
 cc_jenkins_github_client_secret: yourGHClientSecretHere
 cc_jenkins_github_organization: yourGHOrganizationNameHere
