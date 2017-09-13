@@ -1,5 +1,10 @@
 ---
 
+- name: Install the AWS cli
+  pip:
+    name: awscli
+    state: present
+
 - name: Ensure the AWS directory exists
   file:
     path: "{{ jenkins_home }}/.aws"

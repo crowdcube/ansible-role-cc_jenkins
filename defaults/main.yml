@@ -22,8 +22,3 @@ cc_jenkins_k8s_clusters: {}
 
 #GeerlingGuy roles' variables
 java_packages: java-1.8.0-openjdk
-
-jenkins_plugins:
-  - git
-  - scm-sync-configuration
-  - blueocean
