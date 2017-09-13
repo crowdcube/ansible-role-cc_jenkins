@@ -1,0 +1,14 @@
+---
+
+- name: Generate groovy script templates
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ jenkins_home }}/init.groovy.d/{{ item }}"
+    owner: jenkins
+    group: jenkins
+  notify: restart jenkins
+  with_items:
+    - github_oauth.groovy
+    - credentials.groovy
+
+
