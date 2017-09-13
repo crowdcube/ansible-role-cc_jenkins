@@ -27,3 +27,10 @@ end
 describe service('jenkins') do
     it { should be_running }
 end
+
+#Check the Jenkins user
+describe user('jenkins') do
+    it { should belong_to_group 'jenkins' }
+    it { should have_home_directory '/var/lib/jenkins' }
+    it { should have_login_shell '/bin/bash' }
+end

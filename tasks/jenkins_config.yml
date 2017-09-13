@@ -1,0 +1,6 @@
+---
+
+- name: Enable shell for Jenkins user
+  user:
+    name: jenkins
+    shell: /bin/bash

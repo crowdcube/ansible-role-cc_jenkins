@@ -1,5 +1,7 @@
 ---
 
+- include: jenkins_config.yml
+
 - include: github_oauth.yml
 
 - include: aws_config.yml
