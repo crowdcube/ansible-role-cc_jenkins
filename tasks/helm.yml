@@ -35,3 +35,6 @@
 - name: Initialise helm
   become_user: jenkins
   command: helm init
+  when: env != ""
+  # by default, helm will attempt to connect to localhost:8080 to look for kubernetes cluster
+  # during the kitchen tests, it attempts to connect to jenkins, so I have ignored errors
