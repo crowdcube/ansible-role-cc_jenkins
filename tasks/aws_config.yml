@@ -6,17 +6,17 @@
     state: present
 
 - name: AWS CLI - Set access key ID
-  become: jenkins
+  become_user: jenkins
   command: aws configure set aws_access_key_id {{ cc_jenkins_aws_credentials.id }}
 
 - name: AWS CLI - Set secret access key
-  become: jenkins
+  become_user: jenkins
   command: aws configure set aws_secret_access_key {{ cc_jenkins_aws_credentials.secret }}
 
 - name: AWS CLI - Set default region
-  become: jenkins
+  become_user: jenkins
   command: aws configure set default.region {{ cc_jenkins_aws_config.region | default('eu-west-1') }}
 
 - name: AWS CLI - Set default output
-  become: jenkins
+  become_user: jenkins
   command: aws configure set default.output {{ cc_jenkins_aws_config.output | default('json') }}

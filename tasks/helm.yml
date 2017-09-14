@@ -9,7 +9,7 @@
   unarchive:
     src: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ cc_jenkins_helm_version}}-linux-amd64.tar.gz"
     dest: /tmp
-    remote_src: true
+    remote_src: True
 
   # copy module was not functioning as desired, so switched to command
 - name: Copy the helm binary to /var/lib
@@ -33,5 +33,5 @@
     state: absent
 
 - name: Initialise helm
-  become: jenkins
+  become_user: jenkins
   command: helm init
