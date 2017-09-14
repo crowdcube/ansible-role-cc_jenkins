@@ -13,7 +13,7 @@
 
   # copy module was not functioning as desired, so switched to command
 - name: Copy the helm binary to /var/lib
-  command: cp /tmp/{{ cc_jenkins_helm_uncompressed_dir }}/helm /var/lib/helm/helm
+  command: mv /tmp/{{ cc_jenkins_helm_uncompressed_dir }}/helm /var/lib/helm/helm
 
 - name: Create link to helm binary
   file:
