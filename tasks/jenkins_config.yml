@@ -4,6 +4,7 @@
   user:
     name: jenkins
     shell: /bin/bash
+    groups: jenkins,docker
 
 - name: Get the Jenkins cli
   get_url:
