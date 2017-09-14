@@ -15,6 +15,6 @@
 - name: Create link to kubectl binary
   file:
     src: /var/lib/kubectl/kubectl
-    dest: /usr/local/bin/kubectl
+    dest: /usr/bin/kubectl
     state: link
     force: True

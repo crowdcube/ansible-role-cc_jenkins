@@ -18,7 +18,7 @@
 - name: Create link to helm binary
   file:
     src: /var/lib/helm/helm
-    dest: /usr/local/bin/helm
+    dest: /usr/bin/helm
     state: link
     force: True
 
