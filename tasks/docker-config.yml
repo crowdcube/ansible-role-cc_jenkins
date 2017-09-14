@@ -1,0 +1,13 @@
+---
+
+- name: Update Docker service configuration
+  lineinfile:
+    path: /usr/lib/systemd/system/docker.service
+    regexp: '^ExecStart='
+    line: 'ExecStart=/usr/bin/docker daemon -H unix:// -H tcp://localhost:237'
+
+- name: Restart Docker and reload systemd configuration
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: docker

@@ -1,8 +1,10 @@
 ---
 
+- include: groovy_scripts.yml
+
 - include: jenkins_config.yml
 
-- include: groovy_scripts.yml
+- include: docker-config.yml
 
 - include: aws_config.yml
 

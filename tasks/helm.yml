@@ -5,24 +5,15 @@
     path: /var/lib/helm
     state: directory
 
-- name: Get helm compressed package
-  get_url:
-    url: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ cc_jenkins_helm_version}}-linux-amd64.tar.gz"
-    dest: /tmp/helm.tar.gz
-    force: True
-
 - name: Unarchive helm package
   unarchive:
-    src: /tmp/helm.tar.gz
+    src: "https://storage.googleapis.com/kubernetes-helm/helm-v{{ cc_jenkins_helm_version}}-linux-amd64.tar.gz"
     dest: /tmp
-    remote_src: False
+    remote_src: True
 
+  # copy module was not functioning as desired, so switched to command
 - name: Copy the helm binary to /var/lib
-  copy:
-    src: "/tmp/{{ cc_jenkins_helm_uncompressed_dir }}/helm"
-    dest: /var/lib/helm/helm
-    remote_src: False
-    mode: 0775
+  command: mv /tmp/{{ cc_jenkins_helm_uncompressed_dir }}/helm /var/lib/helm/helm
 
 - name: Create link to helm binary
   file:
@@ -40,3 +31,10 @@
   file:
     path: /tmp/helm.tar.gz
     state: absent
+
+- name: Initialise helm
+  become_user: jenkins
+  command: helm init
+  when: env != ""
+  # by default, helm will attempt to connect to localhost:8080 to look for kubernetes cluster
+  # during the kitchen tests, it attempts to connect to jenkins, so I have ignored errors

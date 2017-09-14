@@ -1,5 +1,7 @@
 ---
 
+env: ""
+
 cc_jenkins_github_client_id: yourGHClientIDHere
 cc_jenkins_github_client_secret: yourGHClientSecretHere
 cc_jenkins_github_organization: yourGHOrganizationNameHere

@@ -30,11 +30,17 @@ Jenkins Github OAuth informations, they are used by the groovy script living in 
 ```yaml
 cc_jenkins_credentials:
     git:
-        name: myuser
-        secret: xyz1235
+        id: github
+        name: build-dev
+        username: build-user
+        secret: mypass
+
     aws:
-        name: aws_access_key_id
-        secret: aws_secret_key_id
+        id: aws
+        name: development
+        username: aws_secret_access_key
+        secret: aws_access_key_id
+
 ```
 
 Credentials must be defined in the format above (you must have `cloudbees-credentials` plugin installed).
