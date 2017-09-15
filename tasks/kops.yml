@@ -15,7 +15,7 @@
 - name: Create link to kops binary
   file:
     src: /var/lib/kops/kops
-    dest: /usr/local/bin/kops
+    dest: /usr/bin/kops
     state: link
     force: True
 
