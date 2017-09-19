@@ -42,6 +42,14 @@
   when: cc_jenkins_admin is defined
   ignore_errors: yes
 
+- name: Add jenkins to the sudoers
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%jenkins\s'
+    line: '%jenkins ALL=(ALL) NOPASSWD: ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+
 - name: Restart Jenkins
   service:
     name: jenkins
