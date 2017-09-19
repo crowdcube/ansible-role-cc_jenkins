@@ -42,6 +42,12 @@
   when: cc_jenkins_admin is defined
   ignore_errors: yes
 
+- name: Disable TTY for jenkins
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: Defaults:jenkins !requiretty
+
 - name: Add jenkins to the sudoers
   lineinfile:
     path: /etc/sudoers
