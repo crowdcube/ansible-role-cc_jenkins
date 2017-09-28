@@ -10,5 +10,6 @@
   with_items:
     - github_oauth.groovy
     - credentials.groovy
+    - aws_credentials.groovy
 
 
