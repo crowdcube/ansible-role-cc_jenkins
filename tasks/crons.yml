@@ -1,12 +1,14 @@
 ---
-  - cron:
+  - name: Prune Docker files
+    cron:
       name: "Prune Docker files"
       minute: "0"
       hour: "0"
       job: "docker system prune --all -f"
 
-  - cron:
-      name: "Cleanup Jenkins workspace"
+  - name: Clean up Jenkins workspace directory
+    cron:
+      name: "Clean up Jenkins workspace directory"
       minute: "30"
       hour: "0"
       job: "find {{ jenkins_home }}/workspace/* -exec rm -r \"{}\" \\;"
