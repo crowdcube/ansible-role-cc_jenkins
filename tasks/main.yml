@@ -4,6 +4,8 @@
 
 - include: jenkins_config.yml
 
+- include: crons.yml
+
 - include: docker-config.yml
 
 - include: aws_config.yml
