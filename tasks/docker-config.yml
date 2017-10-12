@@ -11,3 +11,8 @@
     state: restarted
     daemon_reload: yes
     name: docker
+
+- name: Start Docker service on boot
+  service:
+    name: docker
+    state: started
