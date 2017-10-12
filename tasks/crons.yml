@@ -9,4 +9,4 @@
       name: "Cleanup Jenkins workspace"
       minute: "30"
       hour: "0"
-      job: "find {{ jenkins_home }}/workspace/* -exec rm -r \"{}\" \;"
+      job: "find {{ jenkins_home }}/workspace/* -exec rm -r \"{}\" \\;"
