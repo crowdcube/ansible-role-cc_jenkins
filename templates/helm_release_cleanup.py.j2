@@ -13,7 +13,7 @@ import subprocess
 import datetime
 from dateutil.parser import parse
 
-DAYS_TO_KEEP="{{ helm_release_cap }}"
+DAYS_TO_KEEP={{ helm_release_cap }}
 LOG_FILE="{{ helm_release_log_file }}"
 
 def main():
@@ -28,7 +28,7 @@ def main():
     if release_count > 0:
         logging.debug('Found %s releases older than %s day(s)' %(release_count, DAYS_TO_KEEP))
 
-    releases_deleted = []
+    releases_deleted = 0
 
     for release in releases:
         try:
@@ -45,12 +45,12 @@ def main():
                     logging.warning('Error deleting %s' %release_name)
                 else:
                     logging.debug('Deleted %s' %release_name)
-                    releases_deleted += 1
+                    releases_deleted = releases_deleted + 1
 
         except IndexError:
             pass
 
-    logging.debug('Deleted %s releases' %len(releases_deleted))
+    logging.debug('Deleted %s releases' %releases_deleted)
 
 if __name__ == "__main__":
     main()
