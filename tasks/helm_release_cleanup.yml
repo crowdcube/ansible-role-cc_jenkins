@@ -1,0 +1,22 @@
+---
+  - name: Ensure scripts directory exists
+    file:
+      path: "{{ jenkins_home }}/scripts"
+      state: directory
+      owner: jenkins
+      group: jenkins
+
+  - name: Generate Helm release cleanup script
+    template:
+      src: "helm_release_cleanup.py.j2"
+      dest: "{{ jenkins_home }}/scripts/helm_release_cleanup.py"
+      owner: jenkins
+      group: jenkins
+
+  - name: Configure Helm release cleanup cron
+    cron:
+      name: "Clean up Helm releases older than {{ helm_release_cap }} day(s)"
+      minute: "30"
+      hour: "12"
+      job: "python {{ jenkins_home }}/scripts/helm_release_cleanup.py"
+      user: jenkins

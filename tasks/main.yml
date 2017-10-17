@@ -6,6 +6,8 @@
 
 - include: crons.yml
 
+- include: helm_release_cleanup.yml
+
 - include: docker-config.yml
 
 - include: aws_config.yml
