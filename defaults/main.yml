@@ -23,6 +23,8 @@ cc_jenkins_aws_credentials:
 
 cc_jenkins_custom_aws_credentials: {}
 
+cc_jenkins_ssh_credentials: {}
+
 cc_jenkins_k8s_clusters: {}
 
 cc_jenkins_host: http://localhost:8080
