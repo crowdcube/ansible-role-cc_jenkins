@@ -1,11 +1,4 @@
 ---
-  - name: Ensure scripts directory exists
-    file:
-      path: "{{ jenkins_home }}/scripts"
-      state: directory
-      owner: jenkins
-      group: jenkins
-
   - name: Generate Helm release cleanup script
     template:
       src: "helm_release_cleanup.py.j2"
