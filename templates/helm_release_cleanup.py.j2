@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-""" This script cleans up Helm deployments older than X days.
+""" This script cleans up Helm deployments older than X hours.
 
 To run this script, you must have:
 * Helm installed and initialised (helm init)
@@ -13,7 +13,7 @@ import subprocess
 import datetime
 from dateutil.parser import parse
 
-DAYS_TO_KEEP={{ helm_release_cap }}
+HOURS_TO_KEEP={{ helm_release_cap }}
 LOG_FILE="{{ helm_release_log_file }}"
 
 def main():
@@ -26,7 +26,7 @@ def main():
     release_count = len(releases)
 
     if release_count > 0:
-        logging.debug('Found %s releases older than %s day(s)' %(release_count, DAYS_TO_KEEP))
+        logging.debug('Found %s releases older than %s hours(s)' %(release_count, HOURS_TO_KEEP))
 
     releases_deleted = 0
 
@@ -41,7 +41,7 @@ def main():
 
             date = parse(release_updated)
 
-            if date < datetime.datetime.now() - datetime.timedelta(days=DAYS_TO_KEEP):
+            if date < datetime.datetime.now() - datetime.timedelta(hours=HOURS_TO_KEEP):
                 logging.debug('Deleting %s...' %release_name)
                 cmd = "helm delete --purge %s" %release_name
                 output = subprocess.check_call(cmd, shell=True)
