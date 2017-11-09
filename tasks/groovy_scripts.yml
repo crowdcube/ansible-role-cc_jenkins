@@ -1,6 +1,5 @@
 ---
-
-- name: Generate groovy script templates
+- name: Generate groovy startup script templates
   template:
     src: "{{ item }}.j2"
     dest: "{{ jenkins_home }}/init.groovy.d/{{ item }}"
@@ -12,4 +11,18 @@
     - credentials.groovy
     - aws_credentials.groovy
 
+- name: Ensure scripts directory exists
+  file:
+    path: "{{ jenkins_home }}/scripts"
+    state: directory
+    owner: jenkins
+    group: jenkins
 
+- name: Generate groovy cron script templates
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ jenkins_home }}/scripts/{{ item }}"
+    owner: jenkins
+    group: jenkins
+  with_items:
+    - offline_slave_cleanup.groovy

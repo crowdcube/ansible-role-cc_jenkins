@@ -12,3 +12,10 @@
       minute: "30"
       hour: "0"
       job: "find {{ jenkins_home }}/workspace/* -exec rm -r \"{}\" \\;"
+
+  - name: Clean up dead Jenkins slaves
+    cron:
+      name: "Clean up dead Jenkins slaves"
+      minute: "0"
+      hour: "*"
+      job: "java -jar jenkins-cli.jar -auth {{ cc_jenkins_admin.user }}:{{ cc_jenkins_admin.token }} -s {{ cc_jenkins_host }} groovy {{ jenkins_home }}/scripts/offline_slave_cleanup.groovy"

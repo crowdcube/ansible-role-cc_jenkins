@@ -35,6 +35,10 @@ def main():
             release_name = release.split(",")[0]
             release_updated = release.split(",")[1]
 
+            # Ignore releases on Master branches
+            if release_name.startswith("web-master") or release_name.startswith("api-master"):
+                pass
+
             date = parse(release_updated)
 
             if date < datetime.datetime.now() - datetime.timedelta(days=DAYS_TO_KEEP):
