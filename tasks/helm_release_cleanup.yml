@@ -8,7 +8,7 @@
 
   - name: Configure Helm release cleanup cron
     cron:
-      name: "Clean up Helm releases older than {{ helm_release_cap }} day(s)"
+      name: "Clean up Helm releases older than {{ helm_release_cap }} hour(s)"
       minute: "30"
       hour: "*"
       job: "python {{ jenkins_home }}/scripts/helm_release_cleanup.py"
