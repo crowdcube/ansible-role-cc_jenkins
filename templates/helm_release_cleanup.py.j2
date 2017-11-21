@@ -36,8 +36,8 @@ def main():
             release_updated = release.split(",")[1]
 
             # Ignore releases on Master branches
-            if release_name.startswith("web-master") or release_name.startswith("api-master"):
-                pass
+            if release_name == "web-master" or release_name == "api-master":
+                continue
 
             date = parse(release_updated)
 
