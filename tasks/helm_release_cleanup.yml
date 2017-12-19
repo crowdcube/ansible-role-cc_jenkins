@@ -1,15 +1,22 @@
 ---
-  - name: Generate Helm release cleanup script
-    template:
-      src: "helm_release_cleanup.py.j2"
-      dest: "{{ jenkins_home }}/scripts/helm_release_cleanup.py"
-      owner: jenkins
-      group: jenkins
+  - name: Download delivery-helper
+    unarchive:
+      src: https://github.com/crowdcube/delivery-helper/releases/download/v{{ delivery_helper_version }}/delivery-helper_{{ delivery_helper_version }}_Tux_64-bit.tar.gz
+      dest: "/tmp/"
+      remote_src: yes
+
+  - name: Move delivery helper binary
+    command: mv /tmp/delivery-helper {{ delivery_helper_path }}
+
+  - name: Set permissions for delivery-helper binary
+    file:
+      path: "{{ delivery_helper_path }}"
+      mode: 0755
 
   - name: Configure Helm release cleanup cron
     cron:
-      name: "Clean up Helm releases older than {{ helm_release_cap }} hour(s)"
+      name: "Clean up Helm releases for closed Pull Requests"
       minute: "30"
       hour: "*"
-      job: "python {{ jenkins_home }}/scripts/helm_release_cleanup.py"
+      job: "delivery-helper cleanup helm {{ cc_jenkins_admin.token }}"
       user: jenkins

@@ -36,5 +36,5 @@ cc_jenkins_plugins: []
 #GeerlingGuy roles' variables
 java_packages: java-1.8.0-openjdk
 
-helm_release_cap: 24
-helm_release_log_file: helm_release_cleanup.log
+delivery_helper_version: 0.3.1
+delivery_helper_path: /usr/bin/delivery-helper
