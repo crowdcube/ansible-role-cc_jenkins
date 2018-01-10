@@ -40,3 +40,8 @@ end
 describe file('/var/lib/jenkins/jenkins-cli.jar') do
     it { should exist }
 end
+
+#Check Jenkins version
+describe file('/var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion') do
+    its(:content) { should match /2\.100/ }
+end
