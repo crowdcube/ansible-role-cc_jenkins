@@ -31,11 +31,11 @@ if (!orgName) {
             '{% for user in cc_jenkins_github_administrators %}{{ user }}{% if not loop.last %},{% endif %}{% endfor %}', // admin usernames
             true, // authenticatedUserReadPermission
             true, // useRepositoryPermissions
-            false, // authenticatedUserCreateJobPermission
+            true, // authenticatedUserCreateJobPermission
             orgName, // organizationNames
             true, // allowGithubWebHookPermission
             false, // allowCcTrayPermission
-            false, // allowAnonymousReadPermission
+            true, // allowAnonymousReadPermission
             false // allowAnonymousJobStatusPermission
     )
 }
